@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.epam.rd.autocode.spring.project.dto.BookDTO;
+import com.epam.rd.autocode.spring.project.model.Book;
 import com.epam.rd.autocode.spring.project.repo.BookRepository;
 import com.epam.rd.autocode.spring.project.service.BookService;
 
@@ -50,8 +51,14 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public BookDTO addBook(BookDTO book) {
-		// TODO Auto-generated method stub
-		return null;
+		bookRepository.save(modelMapper.map(book, Book.class));
+		return book;
 	}
 	
 }
+
+
+
+
+
+
