@@ -37,13 +37,14 @@ public class Book {
     private AgeGroup ageGroup;
     
     private BigDecimal price;
-    private LocalDate publicationYear;
+    @Column(name = "PUBLICATION_YEAR")
+    private LocalDate publicationDate;
     private String author;
-    private Integer numberOfPages;
+    @Column(name = "NUMBER_OF_PAGES")
+    private Integer pages;
     private String characteristics;
     private String description;
     
     @Enumerated(EnumType.STRING)
     private Language language;
-    
 }

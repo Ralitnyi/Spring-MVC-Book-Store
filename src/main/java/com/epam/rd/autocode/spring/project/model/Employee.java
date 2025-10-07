@@ -3,27 +3,23 @@ package com.epam.rd.autocode.spring.project.model;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "EMPLOYEES")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-public class Employee {
-    
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String email;
-	private String password;
-	private String name;
-	private String phone;
-	private LocalDate birthDate;
+public class Employee extends User {
+    	private String phone;
+    	private LocalDate birthDate;
+
+        public Employee(Long id, String email, String password, String name, String phone, LocalDate birthDate) {
+            super(id, email, password, name);
+            this.phone = phone;
+            this.birthDate = birthDate;
+        }
 }

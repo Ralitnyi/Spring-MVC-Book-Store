@@ -1,8 +1,5 @@
 package com.epam.rd.autocode.spring.project.dto;
 
-
-import java.math.BigDecimal;
-
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -12,15 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClientDTO{
+public class LoginDTO {
 	@NotNull
 	@NotBlank
-    private String email;
+	private String email;
 	@NotNull
 	@NotBlank
-    private String password;
-	@NotNull
-	@NotBlank
-    private String name;
-    private BigDecimal balance;
+	private String password;
 }

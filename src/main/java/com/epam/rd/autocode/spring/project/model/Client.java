@@ -3,25 +3,21 @@ package com.epam.rd.autocode.spring.project.model;
 import java.math.BigDecimal;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "CLIENTS")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-public class Client {
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String email;
-	private String password;
-	private String name;
-    private BigDecimal balance;
+public class Client extends User {
+        private BigDecimal balance;
+
+        public Client(Long id, String email, String password, String name, BigDecimal balance) {
+            super(id, email, password, name);
+            this.balance = balance;
+        }
 }
