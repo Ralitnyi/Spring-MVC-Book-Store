@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:replace="~{layout :: layout}">
+<head>
+    <title>Books</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div th:fragment="content">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 m-0">Books</h1>
+        <a class="btn btn-primary" th:href="@{/books/add}"><i class="bi bi-plus-lg"></i> Add Book</a>
+    </div>
+
+    <div class="row g-3" th:if="${#lists.size(books) > 0}">
+        <div class="col-md-4" th:each="book : ${books}">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${book.name}">Book Name</h5>
+                    <p class="card-text small text-muted" th:text="${book.description}">Description</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <span class="fw-semibold" th:text="${#numbers.formatDecimal(book.price, 1, 'POINT', 2, 'NONE')}">0.00</span>
+                    <div class="btn-group">
+                        <a class="btn btn-sm btn-outline-secondary" th:href="@{'/books/' + ${book.name}}">View</a>
+                        <a class="btn btn-sm btn-outline-primary" th:href="@{'/books/' + ${book.name} + '/edit'}">Edit</a>
+                        <form th:action="@{'/books/' + ${book.name} + '/delete'}" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this book?')">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-info" th:if="${#lists.isEmpty(books)}">
+        No books found.
+    </div>
+</div>
+</body>
+</html>
