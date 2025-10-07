@@ -7,5 +7,7 @@ import com.epam.rd.autocode.spring.project.model.Book;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
-    
+    Book findByName(String name);
+    boolean existsByName(String name);
+    void deleteByName(String name);
 }
