@@ -1,8 +1,8 @@
 package com.epam.rd.autocode.spring.project.service;
 
-import com.epam.rd.autocode.spring.project.dto.OrderDTO;
+import java.util.List;
 
-import java.util.*;
+import com.epam.rd.autocode.spring.project.dto.OrderDTO;
 
 public interface OrderService {
 
