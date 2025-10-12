@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  lang="en"
+  th:replace="~{layout :: layout}"
+>
+  <head>
+    <title th:text="#{balance.insufficient.title}">Insufficient Balance</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div th:fragment="content">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+          <div class="card shadow-sm border-warning">
+            <div class="card-header bg-warning text-dark">
+              <h1 class="h4 mb-0" th:text="#{balance.insufficient.title}">
+                <i class="bi bi-exclamation-triangle"></i> Insufficient Balance
+              </h1>
+            </div>
+            <div class="card-body">
+              <div
+                class="alert alert-warning d-flex align-items-center"
+                role="alert"
+              >
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                <div th:text="#{balance.insufficient.message}">
+                  You don't have enough funds to complete this order.
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <h5 th:text="#{balance.insufficient.details}">
+                  Order Details:
+                </h5>
+                <ul class="list-unstyled">
+                  <li>
+                    <strong th:text="#{balance.insufficient.order_total}"
+                      >Order Total:</strong
+                    >
+                    <span
+                      th:text="${#numbers.formatDecimal(orderTotal, 1, 2)} + '$'"
+                      >0.00$</span
+                    >
+                  </li>
+                  <li>
+                    <strong th:text="#{balance.insufficient.current_balance}"
+                      >Your Balance:</strong
+                    >
+                    <span
+                      th:text="${#numbers.formatDecimal(currentBalance, 1, 2)} + '$'"
+                      >0.00$</span
+                    >
+                  </li>
+                  <li>
+                    <strong th:text="#{balance.insufficient.needed}"
+                      >Additional Funds Needed:</strong
+                    >
+                    <span
+                      th:text="${#numbers.formatDecimal(neededAmount, 1, 2)} + '$'"
+                      >0.00$</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div class="alert alert-info">
+                <i class="bi bi-info-circle me-2"></i>
+                <span th:text="#{balance.insufficient.help}">
+                  Please add funds to your account or reduce the number of items
+                  in your cart.
+                </span>
+              </div>
+
+              <div class="d-flex gap-2 flex-wrap">
+                <a th:href="@{/}" class="btn btn-primary">
+                  <i class="bi bi-house"></i>
+                  <span th:text="#{btn.back_to_home}">Back to Home</span>
+                </a>
+                <a th:href="@{/client/profile}" class="btn btn-outline-primary">
+                  <i class="bi bi-person"></i>
+                  <span th:text="#{nav.profile}">Profile</span>
+                </a>
+                <a th:href="@{/basket}" class="btn btn-outline-secondary">
+                  <i class="bi bi-basket"></i>
+                  <span th:text="#{nav.basket}">Basket</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

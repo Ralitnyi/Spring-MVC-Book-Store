@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  lang="en"
+  th:replace="~{layout :: layout}"
+>
+  <head>
+    <title>Orders Management</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div th:fragment="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h3 mb-0" th:text="#{orders.title}">Orders Management</h1>
+            <div>
+              <a
+                th:href="@{/admin/clients}"
+                class="btn btn-outline-primary me-2"
+              >
+                <i class="bi bi-people"></i> Manage Clients
+              </a>
+              <a
+                th:href="@{/admin/create-employee}"
+                class="btn btn-primary"
+                sec:authorize="hasRole('ADMIN')"
+              >
+                <i class="bi bi-person-plus"></i> Create Employee
+              </a>
+            </div>
+          </div>
+
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead class="table-dark">
+                    <tr>
+                      <th th:text="#{orders.order_id}">Order ID</th>
+                      <th th:text="#{orders.client}">Client</th>
+                      <th th:text="#{orders.order_date}">Order Date</th>
+                      <th th:text="#{orders.total_price}">Total Price</th>
+                      <th th:text="#{orders.items}">Items</th>
+                      <th th:text="#{orders.status}">Status</th>
+                      <th th:text="#{orders.actions}">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="order : ${orders}">
+                      <td th:text="${order.id}">#123</td>
+                      <td th:text="${order.clientEmail}">client@example.com</td>
+                      <td
+                        th:text="${#temporals.format(order.orderDate, 'yyyy-MM-dd HH:mm')}"
+                      >
+                        2024-01-01 12:00
+                      </td>
+                      <td>
+                        <span
+                          th:text="${#numbers.formatDecimal(order.price, 1, 2)} + '$'"
+                          >0.00$</span
+                        >
+                      </td>
+                      <td>
+                        <ul class="list-unstyled mb-0">
+                          <li
+                            th:each="item : ${order.bookItems}"
+                            th:text="${item.bookName} + ' x' + ${item.quantity}"
+                            class="small"
+                          >
+                            Book x1
+                          </li>
+                        </ul>
+                      </td>
+                      <td>
+                        <span
+                          th:if="${order.confirmed}"
+                          class="badge bg-success"
+                          th:text="#{orders.status.confirmed}"
+                          >Confirmed</span
+                        >
+                        <span
+                          th:unless="${order.confirmed}"
+                          class="badge bg-warning"
+                          th:text="#{orders.status.pending}"
+                          >Pending</span
+                        >
+                      </td>
+                      <td>
+                        <form
+                          th:if="${!order.confirmed}"
+                          th:action="@{/admin/orders/confirm}"
+                          method="post"
+                          class="d-inline"
+                        >
+                          <input
+                            type="hidden"
+                            name="orderId"
+                            th:value="${order.id}"
+                          />
+                          <button
+                            type="submit"
+                            class="btn btn-success btn-sm"
+                            onclick="return confirm('Are you sure you want to confirm this order?')"
+                          >
+                            <i class="bi bi-check-circle"></i>
+                            <span th:text="#{orders.confirm}">Confirm</span>
+                          </button>
+                        </form>
+                        <span
+                          th:if="${order.confirmed}"
+                          class="text-muted small"
+                        >
+                          <i class="bi bi-check-circle-fill text-success"></i>
+                          Confirmed
+                        </span>
+                      </td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(orders)}">
+                      <td colspan="7" class="text-center text-muted py-4">
+                        <i class="bi bi-inbox"></i>
+                        <span th:text="#{msg.no_orders}">No orders found</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <a th:href="@{/}" class="btn btn-secondary">
+              <i class="bi bi-arrow-left"></i>
+              <span th:text="#{btn.back_to_home}">Back to Home</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

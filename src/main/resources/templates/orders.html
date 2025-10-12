@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  lang="en"
+  th:replace="~{layout :: layout}"
+>
+  <head>
+    <title>My Orders</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div th:fragment="content">
+      <h1 class="h3" th:text="#{nav.my_orders}">My Orders</h1>
+
+      <div
+        th:if="${#lists.isEmpty(orders)}"
+        class="alert alert-info"
+        th:text="#{msg.no_orders_yet}"
+      >
+        You have no orders yet.
+      </div>
+
+      <div th:if="${!#lists.isEmpty(orders)}" class="list-group">
+        <div class="list-group-item" th:each="order : ${orders}">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Order #<span th:text="${order.id}">123</span></h5>
+            <div class="d-flex align-items-center gap-2">
+              <span
+                th:if="${order.confirmed}"
+                class="badge bg-success"
+                th:text="#{orders.status.confirmed}"
+                >Confirmed</span
+              >
+              <span
+                th:unless="${order.confirmed}"
+                class="badge bg-warning"
+                th:text="#{orders.status.pending}"
+                >Pending</span
+              >
+              <small
+                th:text="${#temporals.format(order.orderDate, 'yyyy-MM-dd HH:mm')}"
+                >date</small
+              >
+            </div>
+          </div>
+          <p class="mb-1">
+            Total:
+            <span
+              class="fw-semibold"
+              th:text="${#numbers.formatDecimal(order.price, 1, 2)} + '$'"
+              >0.00$</span
+            >
+          </p>
+          <ul class="small mb-0">
+            <li
+              th:each="item : ${order.bookItems}"
+              th:text="${item.bookName} + ' x' + ${item.quantity}"
+            >
+              Item xQTY
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

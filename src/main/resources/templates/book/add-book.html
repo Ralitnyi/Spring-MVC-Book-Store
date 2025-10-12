@@ -1,89 +1,288 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en" th:replace="~{layout :: layout}">
-<head>
-    <title>Add Book</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-<div th:fragment="content">
-    <div class="row justify-content-center">
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  lang="en"
+  th:replace="~{layout :: layout}"
+>
+  <head>
+    <title th:text="#{book.add}">Add Book</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const forms = document.getElementsByClassName("needs-validation");
+        Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener(
+            "submit",
+            function (event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div th:fragment="content">
+      <div class="row justify-content-center">
         <div class="col-lg-8 col-xl-7">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h1 class="h4 mb-4">Add new book</h1>
-                    <form th:action="@{/books/add}" th:object="${book}" method="post">
-                        <div class="row g-3">
-                            <div class="col-md-8">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" id="name" class="form-control" th:field="*{name}" required>
-                                <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="price" class="form-label">Price</label>
-                                <input type="number" step="0.01" id="price" class="form-control" th:field="*{price}" required>
-                                <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
-                            </div>
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h1 class="h4 mb-4" th:text="#{book.add}">Add new book</h1>
+              <form
+                class="needs-validation"
+                novalidate
+                th:action="@{/books/add}"
+                th:object="${book}"
+                method="post"
+              >
+              <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <div class="row g-3">
+                  <div class="col-md-8">
+                    <label for="name" class="form-label" th:text="#{form.name}"
+                      >Name</label
+                    >
+                    <input
+                      type="text"
+                      id="name"
+                      class="form-control"
+                      th:field="*{name}"
+                      required
+                      maxlength="255"
+                    />
+                    <div
+                      class="invalid-feedback d-block"
+                      th:if="${#fields.hasErrors('name')}"
+                      th:errors="*{name}"
+                    ></div>
+                  </div>
+                  <div class="col-md-4">
+                    <label
+                      for="price"
+                      class="form-label"
+                      th:text="#{form.price}"
+                      >Price</label
+                    >
+                    <input
+                      type="number"
+                      step="0.01"
+                      min="0.01"
+                      id="price"
+                      class="form-control"
+                      th:field="*{price}"
+                      required
+                    />
+                    <div
+                      class="invalid-feedback d-block"
+                      th:if="${#fields.hasErrors('price')}"
+                      th:errors="*{price}"
+                    ></div>
+                  </div>
 
-                            <div class="col-md-6">
-                                <label for="genre" class="form-label">Genre</label>
-                                <input type="text" id="genre" class="form-control" th:field="*{genre}">
-                                <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="author" class="form-label">Author</label>
-                                <input type="text" id="author" class="form-control" th:field="*{author}" required>
-                                <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></div>
-                            </div>
+                  <div class="col-md-6">
+                    <label
+                      for="genre"
+                      class="form-label"
+                      th:text="#{form.genre}"
+                      >Genre</label
+                    >
+                    <input
+                      type="text"
+                      id="genre"
+                      class="form-control"
+                      th:field="*{genre}"
+                      maxlength="255"
+                    />
+                    <div
+                      class="invalid-feedback d-block"
+                      th:if="${#fields.hasErrors('genre')}"
+                      th:errors="*{genre}"
+                    ></div>
+                  </div>
+                  <div class="col-md-6">
+                    <label
+                      for="author"
+                      class="form-label"
+                      th:text="#{form.author}"
+                      >Author</label
+                    >
+                    <input
+                      type="text"
+                      id="author"
+                      class="form-control"
+                      th:field="*{author}"
+                      required
+                      maxlength="255"
+                    />
+                    <div
+                      class="invalid-feedback d-block"
+                      th:if="${#fields.hasErrors('author')}"
+                      th:errors="*{author}"
+                    ></div>
+                  </div>
 
-                            <div class="col-md-6">
-                                <label for="publicationDate" class="form-label">Publication date</label>
-                                <input type="date" id="publicationDate" class="form-control" th:field="*{publicationDate}" required>
-                                <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('publicationDate')}" th:errors="*{publicationDate}"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="pages" class="form-label">Pages</label>
-                                <input type="number" id="pages" class="form-control" th:field="*{pages}" required min="1">
-                                <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('pages')}" th:errors="*{pages}"></div>
-                            </div>
+                  <div class="col-md-6">
+                    <label
+                      for="publicationDate"
+                      class="form-label"
+                      th:text="#{form.publication_date}"
+                      >Publication date</label
+                    >
+                    <input
+                      type="date"
+                      id="publicationDate"
+                      class="form-control"
+                      th:field="*{publicationDate}"
+                      required
+                    />
+                    <div
+                      class="invalid-feedback d-block"
+                      th:if="${#fields.hasErrors('publicationDate')}"
+                      th:errors="*{publicationDate}"
+                    ></div>
+                  </div>
+                  <div class="col-md-6">
+                    <label
+                      for="pages"
+                      class="form-label"
+                      th:text="#{form.pages}"
+                      >Pages</label
+                    >
+                    <input
+                      type="number"
+                      id="pages"
+                      class="form-control"
+                      th:field="*{pages}"
+                      required
+                      min="1"
+                    />
+                    <div
+                      class="invalid-feedback d-block"
+                      th:if="${#fields.hasErrors('pages')}"
+                      th:errors="*{pages}"
+                    ></div>
+                  </div>
 
-                            <div class="col-md-6">
-                                <label for="ageGroup" class="form-label">Age group</label>
-                                <select id="ageGroup" class="form-select" th:field="*{ageGroup}" required>
-                                    <option th:each="ag : ${ageGroups}" th:value="${ag}" th:text="${ag}">AG</option>
-                                </select>
-                                <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('ageGroup')}" th:errors="*{ageGroup}"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="language" class="form-label">Language</label>
-                                <select id="language" class="form-select" th:field="*{language}" required>
-                                    <option th:each="lang : ${languages}" th:value="${lang}" th:text="${lang}">LANG</option>
-                                </select>
-                                <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('language')}" th:errors="*{language}"></div>
-                            </div>
+                  <div class="col-md-6">
+                    <label
+                      for="ageGroup"
+                      class="form-label"
+                      th:text="#{form.age_group}"
+                      >Age group</label
+                    >
+                    <select
+                      id="ageGroup"
+                      class="form-select"
+                      th:field="*{ageGroup}"
+                      required
+                    >
+                      <option
+                        th:each="ag : ${ageGroups}"
+                        th:value="${ag}"
+                        th:text="${ag}"
+                      >
+                        AG
+                      </option>
+                    </select>
+                    <div
+                      class="invalid-feedback d-block"
+                      th:if="${#fields.hasErrors('ageGroup')}"
+                      th:errors="*{ageGroup}"
+                    ></div>
+                  </div>
+                  <div class="col-md-6">
+                    <label
+                      for="language"
+                      class="form-label"
+                      th:text="#{form.language}"
+                      >Language</label
+                    >
+                    <select
+                      id="language"
+                      class="form-select"
+                      th:field="*{language}"
+                      required
+                    >
+                      <option
+                        th:each="lang : ${languages}"
+                        th:value="${lang}"
+                        th:text="${lang}"
+                      >
+                        LANG
+                      </option>
+                    </select>
+                    <div
+                      class="invalid-feedback d-block"
+                      th:if="${#fields.hasErrors('language')}"
+                      th:errors="*{language}"
+                    ></div>
+                  </div>
 
-                            <div class="col-12">
-                                <label for="characteristics" class="form-label">Characteristics</label>
-                                <textarea id="characteristics" rows="3" class="form-control" th:field="*{characteristics}"></textarea>
-                                <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('characteristics')}" th:errors="*{characteristics}"></div>
-                            </div>
+                  <div class="col-12">
+                    <label
+                      for="characteristics"
+                      class="form-label"
+                      th:text="#{form.characteristics}"
+                      >Characteristics</label
+                    >
+                    <textarea
+                      id="characteristics"
+                      rows="3"
+                      class="form-control"
+                      th:field="*{characteristics}"
+                      maxlength="2000"
+                    ></textarea>
+                    <div
+                      class="invalid-feedback d-block"
+                      th:if="${#fields.hasErrors('characteristics')}"
+                      th:errors="*{characteristics}"
+                    ></div>
+                  </div>
 
-                            <div class="col-12">
-                                <label for="description" class="form-label">Description</label>
-                                <textarea id="description" rows="4" class="form-control" th:field="*{description}"></textarea>
-                                <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
-                            </div>
+                  <div class="col-12">
+                    <label
+                      for="description"
+                      class="form-label"
+                      th:text="#{form.description}"
+                      >Description</label
+                    >
+                    <textarea
+                      id="description"
+                      rows="4"
+                      class="form-control"
+                      th:field="*{description}"
+                      maxlength="4000"
+                    ></textarea>
+                    <div
+                      class="invalid-feedback d-block"
+                      th:if="${#fields.hasErrors('description')}"
+                      th:errors="*{description}"
+                    ></div>
+                  </div>
 
-                            <div class="col-12 d-flex gap-2 mt-2">
-                                <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Save</button>
-                                <a th:href="@{/books}" class="btn btn-outline-secondary">Cancel</a>
-                            </div>
-                        </div>
-                    </form>
+                  <div class="col-12 d-flex gap-2 mt-2">
+                    <button type="submit" class="btn btn-primary">
+                      <i class="bi bi-save"></i>
+                      <span th:text="#{btn.save}">Save</span>
+                    </button>
+                    <a
+                      th:href="@{/books}"
+                      class="btn btn-outline-secondary"
+                      th:text="#{form.cancel}"
+                      >Cancel</a
+                    >
+                  </div>
                 </div>
+              </form>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</body>
+  </body>
 </html>

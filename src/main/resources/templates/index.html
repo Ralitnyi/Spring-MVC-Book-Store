@@ -1,41 +1,64 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en"
-      th:replace="~{layout :: layout}">
-<head>
-    <title>Home - Book Store</title>
-</head>
-<body>
-<div th:fragment="content">
-    <div class="p-5 mb-4 bg-light rounded-3">
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+  lang="en"
+  th:replace="~{layout :: layout}"
+>
+  <head>
+    <title th:text="#{home.title}">Book Store</title>
+  </head>
+  <body>
+    <div th:fragment="content">
+      <div class="p-5 mb-4 bg-light rounded-3">
         <div class="container py-5">
-            <h1 class="display-5 fw-bold">Welcome to Book Store</h1>
-            <p class="col-md-8 fs-5">Browse our collection, manage books, and place orders.</p>
-            <a class="btn btn-primary btn-lg" th:href="@{/books}"><i class="bi bi-journal-text"></i> View Books</a>
+          <h1 class="display-5 fw-bold" th:text="#{home.title}">
+            Welcome to Book Store
+          </h1>
+          <p class="col-md-8 fs-5" th:text="#{home.description}">
+            Browse our collection, manage books, and place orders.
+          </p>
+          <a class="btn btn-primary btn-lg" th:href="@{/books}"
+            ><i class="bi bi-journal-text"></i>
+            <span th:text="#{nav.books}">View Books</span></a
+          >
         </div>
-    </div>
+      </div>
 
-    <div class="row g-4">
+      <div class="row g-4">
         <div class="col-md-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Books</h5>
-                    <p class="card-text">See all available books and details.</p>
-                    <a th:href="@{/books}" class="btn btn-outline-primary">Open</a>
-                </div>
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title" th:text="#{nav.books}">Books</h5>
+              <p class="card-text" th:text="#{home.books.description}">
+                See all available books and details.
+              </p>
+              <a
+                th:href="@{/books}"
+                class="btn btn-outline-primary"
+                th:text="#{btn.open}"
+                >Open</a
+              >
             </div>
+          </div>
         </div>
-        <div class="col-md-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Add Book</h5>
-                    <p class="card-text">Add new books to the catalog.</p>
-                    <a th:href="@{/books/add}" class="btn btn-outline-secondary">Create</a>
-                </div>
+        <div sec:authorize="hasAnyRole('EMPLOYEE', 'ADMIN')" class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title" th:text="#{nav.add_book}">Add Book</h5>
+              <p class="card-text" th:text="#{home.add_book.description}">
+                Add new books to the catalog.
+              </p>
+              <a
+                th:href="@{/books/add}"
+                class="btn btn-outline-secondary"
+                th:text="#{btn.create}"
+                >Create</a
+              >
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</body>
+  </body>
 </html>
-
-
