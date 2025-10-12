@@ -6,6 +6,10 @@ import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -69,6 +73,24 @@ public class BookServiceImpl implements BookService {
 			throw new BusinessLogicException("Failed to retrieve books", ex);
 		}
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Page<BookDTO> getBooks(String keyword, int page, int size, String sortField, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase("asc") ?
+                Sort.by(sortField).ascending() :
+                Sort.by(sortField).descending();
+
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        Page<Book> bookPage;
+        if (keyword != null && !keyword.isEmpty()) {
+            bookPage = bookRepository.findByNameContainingIgnoreCase(keyword, pageable);
+        } else {
+        	bookPage = bookRepository.findAll(pageable);
+        }
+		return bookPage.map(book -> modelMapper.map(book, BookDTO.class));
+    }
 
 	@Override
     @Transactional(readOnly = true)

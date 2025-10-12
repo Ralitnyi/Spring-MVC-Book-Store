@@ -2,7 +2,10 @@ package com.epam.rd.autocode.spring.project.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.epam.rd.autocode.spring.project.dto.BookDTO;
+import com.epam.rd.autocode.spring.project.model.Book;
 
 public interface BookService {
 
@@ -21,4 +24,6 @@ public interface BookService {
     BookDTO updateBook(Long id, BookDTO book);
 
     void deleteBook(Long id);
+
+	Page<BookDTO> getBooks(String keyword, int page, int size, String sortField, String sortDir);
 }
