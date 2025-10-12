@@ -41,8 +41,5 @@ public class Order {
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BookItem> bookItems;
+    private boolean confirmed;
 }
-
-
-
-

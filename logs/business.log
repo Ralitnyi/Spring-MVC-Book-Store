@@ -1,0 +1,113 @@
+2025-10-12 21:41:33.945 [http-nio-8084-exec-1] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760294493945
+2025-10-12 21:41:35.990 [http-nio-8084-exec-4] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760294495990
+2025-10-12 21:41:42.747 [http-nio-8084-exec-8] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760294502747
+2025-10-12 21:41:43.855 [http-nio-8084-exec-9] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760294503855
+2025-10-12 21:41:43.900 [http-nio-8084-exec-9] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760294503900
+2025-10-12 21:41:52.537 [http-nio-8084-exec-3] INFO  BUSINESS - BUSINESS_EVENT | Type: CLIENTS_LIST_REQUESTED | Details: Admin/Employee requested clients list | User: admin | Timestamp: 1760294512537
+2025-10-12 21:41:55.879 [http-nio-8084-exec-4] INFO  BUSINESS - BUSINESS_EVENT | Type: ORDERS_LIST_REQUESTED | Details: Admin/Employee requested orders list | User: admin | Timestamp: 1760294515879
+2025-10-12 21:41:58.505 [http-nio-8084-exec-6] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760294518505
+2025-10-12 21:42:02.064 [http-nio-8084-exec-8] INFO  BUSINESS - BUSINESS_EVENT | Type: CLIENT_REGISTRATION_ATTEMPT | Details: Client registration attempt: test@gmail.com | User: anonymous | Timestamp: 1760294522064
+2025-10-12 21:42:02.162 [http-nio-8084-exec-8] INFO  BUSINESS - USER_REGISTERED | Email: test@gmail.com | Role: CLIENT | Timestamp: 1760294522162
+2025-10-12 21:42:03.959 [http-nio-8084-exec-3] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760294523959
+2025-10-12 21:42:04.466 [http-nio-8084-exec-4] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760294524466
+2025-10-12 21:42:04.473 [http-nio-8084-exec-4] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760294524473
+2025-10-12 21:42:06.439 [http-nio-8084-exec-6] INFO  BUSINESS - ITEM_ADDED_TO_CART | Book: The Great Gatsby | User: anonymous | Quantity: 1 | Timestamp: 1760294526439
+2025-10-12 21:42:06.455 [http-nio-8084-exec-7] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760294526455
+2025-10-12 21:42:18.597 [http-nio-8084-exec-6] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760294538597
+2025-10-12 21:42:18.603 [http-nio-8084-exec-6] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760294538603
+2025-10-12 21:42:19.139 [http-nio-8084-exec-7] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760294539139
+2025-10-12 21:42:19.793 [http-nio-8084-exec-8] INFO  BUSINESS - ORDER_CREATED | OrderId: test@gmail.com | Client: 12.99 | Amount: 1760294539793 | Timestamp: {}
+2025-10-12 21:42:24.027 [http-nio-8084-exec-10] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760294544027
+2025-10-12 21:42:24.032 [http-nio-8084-exec-10] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760294544032
+2025-10-12 21:42:27.189 [http-nio-8084-exec-2] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760294547189
+2025-10-12 21:42:27.905 [http-nio-8084-exec-3] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760294547905
+2025-10-12 21:42:27.910 [http-nio-8084-exec-3] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760294547910
+2025-10-12 21:42:29.797 [http-nio-8084-exec-5] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760294549797
+2025-10-12 21:42:29.802 [http-nio-8084-exec-5] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760294549802
+2025-10-12 21:42:30.397 [http-nio-8084-exec-6] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760294550397
+2025-10-12 21:42:31.843 [http-nio-8084-exec-7] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760294551843
+2025-10-12 21:42:31.847 [http-nio-8084-exec-7] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760294551847
+2025-10-12 21:42:33.589 [http-nio-8084-exec-8] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760294553589
+2025-10-12 21:42:35.136 [http-nio-8084-exec-9] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760294555136
+2025-10-12 21:42:41.003 [http-nio-8084-exec-10] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760294561003
+2025-10-12 21:42:41.006 [http-nio-8084-exec-10] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760294561006
+2025-10-12 21:50:59.233 [http-nio-8084-exec-1] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760295059233
+2025-10-12 21:51:00.501 [http-nio-8084-exec-3] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760295060501
+2025-10-12 21:51:00.548 [http-nio-8084-exec-3] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760295060548
+2025-10-12 21:51:01.984 [http-nio-8084-exec-5] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760295061984
+2025-10-12 21:51:04.751 [http-nio-8084-exec-8] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760295064751
+2025-10-12 21:51:05.233 [http-nio-8084-exec-9] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760295065233
+2025-10-12 21:51:05.800 [http-nio-8084-exec-10] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760295065800
+2025-10-12 21:51:05.814 [http-nio-8084-exec-10] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760295065814
+2025-10-12 21:51:06.544 [http-nio-8084-exec-2] INFO  BUSINESS - BUSINESS_EVENT | Type: CLIENTS_LIST_REQUESTED | Details: Admin/Employee requested clients list | User: admin | Timestamp: 1760295066544
+2025-10-12 21:51:06.981 [http-nio-8084-exec-3] INFO  BUSINESS - BUSINESS_EVENT | Type: ORDERS_LIST_REQUESTED | Details: Admin/Employee requested orders list | User: admin | Timestamp: 1760295066981
+2025-10-12 21:51:07.499 [http-nio-8084-exec-4] INFO  BUSINESS - BUSINESS_EVENT | Type: CLIENTS_LIST_REQUESTED | Details: Admin/Employee requested clients list | User: admin | Timestamp: 1760295067499
+2025-10-12 21:51:08.984 [http-nio-8084-exec-5] INFO  BUSINESS - BUSINESS_EVENT | Type: CLIENT_BLOCK_REQUESTED | Details: Attempting to block client: admin@example.com | User: admin | Timestamp: 1760295068984
+2025-10-12 21:51:09.030 [http-nio-8084-exec-5] INFO  BUSINESS - BUSINESS_EVENT | Type: CLIENT_BLOCKED | Details: Client blocked: admin@example.com | User: admin | Timestamp: 1760295069030
+2025-10-12 21:51:09.051 [http-nio-8084-exec-6] INFO  BUSINESS - BUSINESS_EVENT | Type: CLIENTS_LIST_REQUESTED | Details: Admin/Employee requested clients list | User: admin | Timestamp: 1760295069051
+2025-10-12 21:51:09.982 [http-nio-8084-exec-7] INFO  BUSINESS - BUSINESS_EVENT | Type: CLIENT_UNBLOCK_REQUESTED | Details: Attempting to unblock client: admin@example.com | User: admin | Timestamp: 1760295069982
+2025-10-12 21:51:09.987 [http-nio-8084-exec-7] INFO  BUSINESS - BUSINESS_EVENT | Type: CLIENT_UNBLOCKED | Details: Client unblocked: admin@example.com | User: admin | Timestamp: 1760295069987
+2025-10-12 21:51:09.995 [http-nio-8084-exec-8] INFO  BUSINESS - BUSINESS_EVENT | Type: CLIENTS_LIST_REQUESTED | Details: Admin/Employee requested clients list | User: admin | Timestamp: 1760295069995
+2025-10-12 21:51:10.449 [http-nio-8084-exec-9] INFO  BUSINESS - BUSINESS_EVENT | Type: CLIENTS_LIST_REQUESTED | Details: Admin/Employee requested clients list | User: admin | Timestamp: 1760295070449
+2025-10-12 21:51:27.385 [http-nio-8084-exec-4] INFO  BUSINESS - BOOK_CREATED | Book: asdf | User: anonymous | Timestamp: 1760295087385
+2025-10-12 21:51:27.393 [http-nio-8084-exec-5] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760295087393
+2025-10-12 21:51:27.400 [http-nio-8084-exec-5] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 47 books | User: system | Timestamp: 1760295087400
+2025-10-12 22:00:35.627 [http-nio-8084-exec-2] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760295635627
+2025-10-12 22:00:40.530 [http-nio-8084-exec-6] INFO  BUSINESS - BUSINESS_EVENT | Type: CLIENT_REGISTRATION_ATTEMPT | Details: Client registration attempt: test@gmail.com | User: anonymous | Timestamp: 1760295640530
+2025-10-12 22:00:40.735 [http-nio-8084-exec-6] INFO  BUSINESS - USER_REGISTERED | Email: test@gmail.com | Role: CLIENT | Timestamp: 1760295640735
+2025-10-12 22:00:42.463 [http-nio-8084-exec-10] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760295642463
+2025-10-12 22:00:43.192 [http-nio-8084-exec-1] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760295643192
+2025-10-12 22:00:43.557 [http-nio-8084-exec-2] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760295643557
+2025-10-12 22:00:43.579 [http-nio-8084-exec-2] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760295643579
+2025-10-12 22:00:43.878 [http-nio-8084-exec-4] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760295643878
+2025-10-12 22:07:54.790 [http-nio-8084-exec-6] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760296074790
+2025-10-12 22:07:55.325 [http-nio-8084-exec-8] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760296075325
+2025-10-12 22:07:55.674 [http-nio-8084-exec-9] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760296075674
+2025-10-12 22:07:55.679 [http-nio-8084-exec-9] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760296075679
+2025-10-12 22:07:55.938 [http-nio-8084-exec-10] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760296075938
+2025-10-12 22:07:57.198 [http-nio-8084-exec-1] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760296077198
+2025-10-12 22:07:57.204 [http-nio-8084-exec-1] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760296077204
+2025-10-12 22:07:59.032 [http-nio-8084-exec-3] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760296079032
+2025-10-12 22:08:01.410 [http-nio-8084-exec-6] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760296081410
+2025-10-12 22:08:01.832 [http-nio-8084-exec-7] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760296081832
+2025-10-12 22:08:01.837 [http-nio-8084-exec-7] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760296081837
+2025-10-12 22:08:08.382 [http-nio-8084-exec-2] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760296088382
+2025-10-12 22:08:08.391 [http-nio-8084-exec-2] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760296088391
+2025-10-12 22:08:30.660 [http-nio-8084-exec-6] INFO  BUSINESS - BOOK_UPDATED | Book: The Great Gatsbya123 | User: anonymous | Timestamp: 1760296110660
+2025-10-12 22:09:38.828 [http-nio-8084-exec-9] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760296178828
+2025-10-12 22:09:38.833 [http-nio-8084-exec-9] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760296178833
+2025-10-12 22:10:21.158 [http-nio-8084-exec-2] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760296221158
+2025-10-12 22:10:23.143 [http-nio-8084-exec-5] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760296223143
+2025-10-12 22:10:24.456 [http-nio-8084-exec-6] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760296224456
+2025-10-12 22:10:24.459 [http-nio-8084-exec-6] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760296224459
+2025-10-12 22:10:31.611 [http-nio-8084-exec-10] INFO  BUSINESS - BOOK_UPDATED | Book: Pride and Prejudice | User: anonymous | Timestamp: 1760296231611
+2025-10-12 22:11:54.664 [http-nio-8084-exec-1] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760296314664
+2025-10-12 22:11:54.668 [http-nio-8084-exec-1] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760296314668
+2025-10-12 22:11:55.109 [http-nio-8084-exec-2] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760296315109
+2025-10-12 22:11:55.454 [http-nio-8084-exec-3] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760296315454
+2025-10-12 22:11:55.457 [http-nio-8084-exec-3] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760296315457
+2025-10-12 22:12:06.319 [http-nio-8084-exec-7] INFO  BUSINESS - BOOK_UPDATED | Book: The Great Gatsbya123123 | User: anonymous | Timestamp: 1760296326319
+2025-10-12 22:35:07.622 [http-nio-8084-exec-3] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760297707622
+2025-10-12 22:35:08.799 [http-nio-8084-exec-5] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760297708799
+2025-10-12 22:35:12.909 [http-nio-8084-exec-7] INFO  BUSINESS - BUSINESS_EVENT | Type: CLIENT_REGISTRATION_ATTEMPT | Details: Client registration attempt: test@gmail.com | User: anonymous | Timestamp: 1760297712909
+2025-10-12 22:35:13.031 [http-nio-8084-exec-7] INFO  BUSINESS - USER_REGISTERED | Email: test@gmail.com | Role: CLIENT | Timestamp: 1760297713031
+2025-10-12 22:35:15.014 [http-nio-8084-exec-10] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760297715014
+2025-10-12 22:35:15.832 [http-nio-8084-exec-1] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760297715832
+2025-10-12 22:35:15.853 [http-nio-8084-exec-1] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760297715853
+2025-10-12 22:35:16.314 [http-nio-8084-exec-2] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760297716314
+2025-10-12 22:35:16.659 [http-nio-8084-exec-3] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760297716659
+2025-10-12 22:35:16.668 [http-nio-8084-exec-3] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760297716668
+2025-10-12 22:35:18.044 [http-nio-8084-exec-5] INFO  BUSINESS - ITEM_ADDED_TO_CART | Book: The Great Gatsby | User: anonymous | Quantity: 1 | Timestamp: 1760297718044
+2025-10-12 22:35:18.057 [http-nio-8084-exec-6] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760297718057
+2025-10-12 22:35:20.068 [http-nio-8084-exec-8] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760297720068
+2025-10-12 22:35:22.243 [http-nio-8084-exec-10] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760297722243
+2025-10-12 22:35:23.156 [http-nio-8084-exec-1] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760297723156
+2025-10-12 22:35:23.161 [http-nio-8084-exec-1] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760297723161
+2025-10-12 22:35:25.235 [http-nio-8084-exec-3] INFO  BUSINESS - ITEM_ADDED_TO_CART | Book: Harry Potter and the Sorcerer's Stone | User: anonymous | Quantity: 1 | Timestamp: 1760297725235
+2025-10-12 22:35:25.252 [http-nio-8084-exec-4] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760297725252
+2025-10-12 22:35:38.755 [http-nio-8084-exec-1] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760297738755
+2025-10-12 22:35:40.379 [http-nio-8084-exec-2] INFO  BUSINESS - ORDER_CREATED | OrderId: test@gmail.com | Client: 74.94 | Amount: 1760297740379 | Timestamp: {}
+2025-10-12 22:35:54.248 [http-nio-8084-exec-6] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760297754248
+2025-10-12 22:35:54.749 [http-nio-8084-exec-7] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOK_LIST_REQUESTED | Details: User requested book list | User: anonymous | Timestamp: 1760297754749
+2025-10-12 22:35:54.752 [http-nio-8084-exec-7] INFO  BUSINESS - BUSINESS_EVENT | Type: BOOKS_RETRIEVED | Details: Retrieved 46 books | User: system | Timestamp: 1760297754752
+2025-10-12 22:35:59.926 [http-nio-8084-exec-8] INFO  BUSINESS - BUSINESS_EVENT | Type: HOME_PAGE_REQUESTED | Details: User requested home page | User: anonymous | Timestamp: 1760297759926

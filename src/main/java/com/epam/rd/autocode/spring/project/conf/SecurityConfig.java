@@ -1,45 +1,55 @@
 package com.epam.rd.autocode.spring.project.conf;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
+    @Autowired
+    private AuthenticationFailureHandler authenticationFailureHandler;
+
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/books", "/register", "/css/**", "/js/**", "/images/**", "/h2-console/**").permitAll()
+                .requestMatchers("/", "/client/register", "/css/**", "/js/**", "/images/**", "/h2-console/**").permitAll()
+                .requestMatchers("/employee/**").hasAnyRole("EMPLOYEE", "ADMIN")
+                .requestMatchers("/client/**").hasAnyRole("CLIENT", "ADMIN")
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
-                .loginPage("/login").permitAll()
-                .loginProcessingUrl("/do-login") // Куди відправляється POST із форми
-                .usernameParameter("email")      // Поле name="email" замість стандартного username
-                .passwordParameter("password")   // Поле name="password"
-                .defaultSuccessUrl("/", true)    // Куди переходить після успішного входу
-                .failureUrl("/login?error=true") // Додатково: показує помилку
+                .loginPage("/client/login").permitAll()
+                .loginProcessingUrl("/do-login")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/", true)
+                .failureHandler(authenticationFailureHandler)
             )
             .logout(logout -> logout
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
                 .permitAll()
             )
+            .csrf(Customizer.withDefaults())
             .csrf(csrf -> csrf
-                .ignoringRequestMatchers("/h2-console/**")
+        		.ignoringRequestMatchers("/api/**")
             )
             .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()));
 

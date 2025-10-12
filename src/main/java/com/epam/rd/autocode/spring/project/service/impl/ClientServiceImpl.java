@@ -1,5 +1,6 @@
 package com.epam.rd.autocode.spring.project.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -54,9 +55,13 @@ public class ClientServiceImpl implements ClientService{
             throw new NotFoundException("Client not found: " + email);
         }
         existing.setEmail(client.getEmail());
-        existing.setPassword(client.getPassword());
+        if (client.getPassword() != null && !client.getPassword().isBlank()) {
+            existing.setPassword(passwordEncoder.encode(client.getPassword()));
+        }
         existing.setName(client.getName());
-        existing.setBalance(client.getBalance());
+        if (client.getBalance() != null) {
+            existing.setBalance(client.getBalance());
+        }
         Client saved = clientRepository.save(existing);
         return modelMapper.map(saved, ClientDTO.class);
 	}
@@ -77,8 +82,50 @@ public class ClientServiceImpl implements ClientService{
             throw new AlreadyExistException("Client already exists: " + client.getEmail());
         }
         Client entity = modelMapper.map(client, Client.class);
+        if (entity.getBalance() == null) {
+            entity.setBalance(BigDecimal.ZERO);
+        }
+        if (entity.getRole() == null) {
+        	entity.setRole("CLIENT");
+        }
         entity.setPassword(passwordEncoder.encode(client.getPassword()));
         Client saved = clientRepository.save(entity);
         return modelMapper.map(saved, ClientDTO.class);
 	}
+
+    @Override
+    @Transactional
+    public void blockClient(String email) {
+        Client client = clientRepository.findByEmail(email);
+        if (client == null) throw new NotFoundException("Client not found: " + email);
+        client.setBlocked(true);
+        clientRepository.save(client);
+    }
+
+    @Override
+    @Transactional
+    public void unblockClient(String email) {
+        Client client = clientRepository.findByEmail(email);
+        if (client == null) throw new NotFoundException("Client not found: " + email);
+        client.setBlocked(false);
+        clientRepository.save(client);
+    }
+    
+    @Override
+    @Transactional
+    public void deductBalance(String email, BigDecimal amount) {
+        Client client = clientRepository.findByEmail(email);
+        if (client == null) {
+            throw new NotFoundException("Client not found: " + email);
+        }
+        if (client.getBalance() == null) {
+            client.setBalance(BigDecimal.ZERO);
+        }
+        BigDecimal newBalance = client.getBalance().subtract(amount);
+        if (newBalance.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("Insufficient balance for deduction");
+        }
+        client.setBalance(newBalance);
+        clientRepository.save(client);
+    }
 }

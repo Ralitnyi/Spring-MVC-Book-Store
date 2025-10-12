@@ -3,6 +3,7 @@ package com.epam.rd.autocode.spring.project.service.impl;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,12 +17,15 @@ import com.epam.rd.autocode.spring.project.service.EmployeeService;
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
 
+    private final PasswordEncoder passwordEncoder;
+
     private final EmployeeRepository employeeRepository;
     private final ModelMapper modelMapper;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, ModelMapper modelMapper) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
         this.employeeRepository = employeeRepository;
         this.modelMapper = modelMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -51,7 +55,9 @@ public class EmployeeServiceImpl implements EmployeeService{
             throw new NotFoundException("Employee not found: " + email);
         }
         existing.setEmail(employeeDTO.getEmail());
-        existing.setPassword(employeeDTO.getPassword());
+        if (employeeDTO.getPassword() != null && !employeeDTO.getPassword().isBlank()) {
+            existing.setPassword(passwordEncoder.encode(employeeDTO.getPassword()));
+        }
         existing.setName(employeeDTO.getName());
         existing.setPhone(employeeDTO.getPhone());
         existing.setBirthDate(employeeDTO.getBirthDate());
@@ -74,7 +80,12 @@ public class EmployeeServiceImpl implements EmployeeService{
         if (employeeRepository.existsByEmail(employeeDTO.getEmail())) {
             throw new AlreadyExistException("Employee already exists: " + employeeDTO.getEmail());
         }
-        Employee saved = employeeRepository.save(modelMapper.map(employeeDTO, Employee.class));
+        Employee entity = modelMapper.map(employeeDTO, Employee.class);
+        if (entity.getRole() == null) {
+        	entity.setRole("EMPLOYEE");
+        }
+        entity.setPassword(passwordEncoder.encode(entity.getPassword()));
+        Employee saved = employeeRepository.save(entity);
         return modelMapper.map(saved, EmployeeDTO.class);
     }
 }

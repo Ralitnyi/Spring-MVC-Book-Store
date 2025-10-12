@@ -15,4 +15,10 @@ public interface BookService {
     void deleteBookByName(String name);
 
     BookDTO addBook(BookDTO book);
+
+    BookDTO getBookById(Long id);
+
+    BookDTO updateBook(Long id, BookDTO book);
+
+    void deleteBook(Long id);
 }
