@@ -19,10 +19,8 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
     public void onAuthenticationFailure(HttpServletRequest request, 
                                       HttpServletResponse response, 
                                       AuthenticationException exception) throws IOException, ServletException {
-        
         String redirectUrl = "/client/login?error=true";
         
-        // Check if the account is locked/blocked
         if (exception instanceof LockedException || 
             exception instanceof DisabledException ||
             (exception instanceof AccountStatusException && 

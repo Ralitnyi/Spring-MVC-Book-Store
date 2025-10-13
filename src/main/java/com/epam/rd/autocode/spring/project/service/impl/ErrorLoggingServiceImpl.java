@@ -18,7 +18,6 @@ public class ErrorLoggingServiceImpl implements ErrorLoggingService {
     private static final Logger performanceLogger = LoggerFactory.getLogger("PERFORMANCE");
     private static final Logger criticalLogger = LoggerFactory.getLogger("CRITICAL");
     
-    // Application errors
     @Override
     public void logApplicationError(String operation, Exception exception, String user) {
         errorLogger.error("APPLICATION_ERROR | Operation: {} | User: {} | Error: {} | Timestamp: {}", 
@@ -37,7 +36,6 @@ public class ErrorLoggingServiceImpl implements ErrorLoggingService {
             operation, exception.getMessage(), System.currentTimeMillis(), exception);
     }
     
-    // Database errors
     @Override
     public void logDatabaseError(String operation, DataAccessException exception, String user) {
         databaseLogger.error("DATABASE_ERROR | Operation: {} | User: {} | Error: {} | Timestamp: {}", 
@@ -57,7 +55,6 @@ public class ErrorLoggingServiceImpl implements ErrorLoggingService {
             operation, exception.getMessage(), System.currentTimeMillis(), exception);
     }
     
-    // Validation errors
     @Override
     public void logValidationError(String field, String value, String message, String user) {
         errorLogger.warn("VALIDATION_ERROR | Field: {} | Value: {} | Message: {} | User: {} | Timestamp: {}", 
@@ -70,7 +67,6 @@ public class ErrorLoggingServiceImpl implements ErrorLoggingService {
             constraint, operation, user, System.currentTimeMillis());
     }
     
-    // Security errors
     @Override
     public void logSecurityViolation(String operation, String user, String details) {
         securityLogger.warn("SECURITY_VIOLATION | Operation: {} | User: {} | Details: {} | Timestamp: {}", 
@@ -89,7 +85,6 @@ public class ErrorLoggingServiceImpl implements ErrorLoggingService {
             email, reason, ipAddress, System.currentTimeMillis());
     }
     
-    // Business logic errors
     @Override
     public void logBusinessRuleViolation(String rule, String operation, String user) {
         errorLogger.warn("BUSINESS_RULE_VIOLATION | Rule: {} | Operation: {} | User: {} | Timestamp: {}", 
@@ -108,7 +103,6 @@ public class ErrorLoggingServiceImpl implements ErrorLoggingService {
             resourceType, identifier, user, System.currentTimeMillis());
     }
     
-    // Performance errors
     @Override
     public void logSlowOperation(String operation, long durationMs, String user) {
         performanceLogger.warn("SLOW_OPERATION | Operation: {} | Duration: {}ms | User: {} | Timestamp: {}", 
@@ -121,7 +115,6 @@ public class ErrorLoggingServiceImpl implements ErrorLoggingService {
             operation, timeoutMs, user, System.currentTimeMillis());
     }
     
-    // General error logging
     @Override
     public void logError(String errorType, String operation, String message, String user, Exception exception) {
         errorLogger.error("{} | Operation: {} | User: {} | Message: {} | Timestamp: {}", 

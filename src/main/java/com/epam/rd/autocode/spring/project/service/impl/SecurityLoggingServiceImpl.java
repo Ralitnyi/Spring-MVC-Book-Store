@@ -14,7 +14,6 @@ public class SecurityLoggingServiceImpl implements SecurityLoggingService {
     private static final Logger auditLogger = LoggerFactory.getLogger("AUDIT");
     private static final Logger alertLogger = LoggerFactory.getLogger("ALERT");
     
-    // Authentication events
     @Override
     public void logAuthenticationSuccess(String email, String ipAddress, String userAgent) {
         authLogger.info("AUTH_SUCCESS | Email: {} | IP: {} | UserAgent: {} | Timestamp: {}", 
@@ -39,7 +38,6 @@ public class SecurityLoggingServiceImpl implements SecurityLoggingService {
             email, ipAddress, System.currentTimeMillis());
     }
     
-    // Authorization events
     @Override
     public void logAccessGranted(String resource, String user, String ipAddress) {
         auditLogger.info("ACCESS_GRANTED | Resource: {} | User: {} | IP: {} | Timestamp: {}", 
@@ -58,7 +56,6 @@ public class SecurityLoggingServiceImpl implements SecurityLoggingService {
             user, fromRole, toRole, ipAddress, System.currentTimeMillis());
     }
     
-    // Account events
     @Override
     public void logAccountCreated(String email, String role, String ipAddress) {
         auditLogger.info("ACCOUNT_CREATED | Email: {} | Role: {} | IP: {} | Timestamp: {}", 
@@ -107,7 +104,6 @@ public class SecurityLoggingServiceImpl implements SecurityLoggingService {
             email, ipAddress, System.currentTimeMillis());
     }
     
-    // Security violations
     @Override
     public void logSuspiciousActivity(String user, String activity, String ipAddress, String details) {
         alertLogger.warn("SUSPICIOUS_ACTIVITY | User: {} | Activity: {} | IP: {} | Details: {} | Timestamp: {}", 
@@ -132,7 +128,6 @@ public class SecurityLoggingServiceImpl implements SecurityLoggingService {
             user, resource, ipAddress, details, System.currentTimeMillis());
     }
     
-    // Data access events
     @Override
     public void logSensitiveDataAccess(String user, String dataType, String operation, String ipAddress) {
         auditLogger.info("SENSITIVE_DATA_ACCESS | User: {} | DataType: {} | Operation: {} | IP: {} | Timestamp: {}", 
@@ -151,7 +146,6 @@ public class SecurityLoggingServiceImpl implements SecurityLoggingService {
             user, entity, operation, ipAddress, System.currentTimeMillis());
     }
     
-    // System security events
     @Override
     public void logSecurityConfigurationChange(String adminUser, String setting, String oldValue, String newValue, String ipAddress) {
         auditLogger.info("SECURITY_CONFIG_CHANGE | Admin: {} | Setting: {} | OldValue: {} | NewValue: {} | IP: {} | Timestamp: {}", 
@@ -175,7 +169,6 @@ public class SecurityLoggingServiceImpl implements SecurityLoggingService {
         }
     }
     
-    // General security events
     @Override
     public void logSecurityEvent(String eventType, String user, String details, String ipAddress) {
         securityLogger.info("SECURITY_EVENT | Type: {} | User: {} | Details: {} | IP: {} | Timestamp: {}", 

@@ -124,7 +124,7 @@ public class OrderServiceImpl implements OrderService{
     @Transactional
     public void confirmOrder(Long id) {
         Order order = orderRepository.findById(id).orElseThrow(() -> new NotFoundException("Order not found: " + id));
-        order.setConfirmed(true); // Assuming there is a confirmed field
+        order.setConfirmed(true);
         orderRepository.save(order);
     }
 }

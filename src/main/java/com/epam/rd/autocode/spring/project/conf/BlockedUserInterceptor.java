@@ -31,19 +31,15 @@ public class BlockedUserInterceptor implements HandlerInterceptor {
             
             String email = authentication.getName();
             
-            // Check if user is a client
             Client client = clientRepository.findByEmail(email);
             if (client != null && client.isBlocked()) {
-                // Logout the blocked user
                 new SecurityContextLogoutHandler().logout(request, response, authentication);
                 response.sendRedirect("/client/login?blocked=true");
                 return false;
             }
             
-            // Check if user is an employee
             Employee employee = employeeRepository.findByEmail(email);
             if (employee != null && employee.isBlocked()) {
-                // Logout the blocked employee
                 new SecurityContextLogoutHandler().logout(request, response, authentication);
                 response.sendRedirect("/client/login?blocked=true");
                 return false;

@@ -113,9 +113,9 @@ public class BookServiceImpl implements BookService {
 			logger.error("Database error while retrieving book by name: {}", name, ex);
 			throw new DatabaseException("Failed to retrieve book from database", ex);
 		} catch (NotFoundException ex) {
-			throw ex; // Re-throw custom exceptions
+			throw ex;
 		} catch (ValidationException ex) {
-			throw ex; // Re-throw custom exceptions
+			throw ex;
 		} catch (Exception ex) {
 			logger.error("Unexpected error while retrieving book by name: {}", name, ex);
 			throw new BusinessLogicException("Failed to retrieve book", ex);
@@ -143,9 +143,9 @@ public class BookServiceImpl implements BookService {
 			logger.error("Database error while retrieving book by id: {}", id, ex);
 			throw new DatabaseException("Failed to retrieve book from database", ex);
 		} catch (NotFoundException ex) {
-			throw ex; // Re-throw custom exceptions
+			throw ex;
 		} catch (ValidationException ex) {
-			throw ex; // Re-throw custom exceptions
+			throw ex;
 		} catch (Exception ex) {
 			logger.error("Unexpected error while retrieving book by id: {}", id, ex);
 			throw new BusinessLogicException("Failed to retrieve book", ex);
@@ -172,7 +172,6 @@ public class BookServiceImpl implements BookService {
 				throw new NotFoundException("Book not found: " + name);
 			}
 			
-			// Check if new name already exists (if name is being changed)
 			if (!existing.getName().equals(book.getName()) && bookRepository.existsByName(book.getName())) {
 				logger.warn("Book with name {} already exists", book.getName());
 				throw new AlreadyExistException("Book with name '" + book.getName() + "' already exists");
@@ -196,7 +195,7 @@ public class BookServiceImpl implements BookService {
 			logger.error("Database error while updating book by name: {}", name, ex);
 			throw new DatabaseException("Failed to update book in database", ex);
 		} catch (NotFoundException | AlreadyExistException | ValidationException ex) {
-			throw ex; // Re-throw custom exceptions
+			throw ex;
 		} catch (Exception ex) {
 			logger.error("Unexpected error while updating book by name: {}", name, ex);
 			throw new BusinessLogicException("Failed to update book", ex);
@@ -232,7 +231,6 @@ public class BookServiceImpl implements BookService {
 				throw new NotFoundException("Book not found: " + name);
 			}
 			
-			// First delete all BookItem records that reference this book
 			logger.debug("Deleting all BookItem records for book: {}", name);
 			List<BookItem> bookItems = bookItemRepository.findByBook(book);
 			if (!bookItems.isEmpty()) {
@@ -243,14 +241,13 @@ public class BookServiceImpl implements BookService {
 				logger.debug("No BookItem records found for book: {}", name);
 			}
 			
-			// Then delete the book itself
 			bookRepository.deleteByName(name);
 			logger.debug("Successfully deleted book: {}", name);
 		} catch (DataAccessException ex) {
 			logger.error("Database error while deleting book by name: {}", name, ex);
 			throw new DatabaseException("Failed to delete book from database", ex);
 		} catch (NotFoundException | ValidationException ex) {
-			throw ex; // Re-throw custom exceptions
+			throw ex;
 		} catch (Exception ex) {
 			logger.error("Unexpected error while deleting book by name: {}", name, ex);
 			throw new BusinessLogicException("Failed to delete book", ex);
@@ -262,7 +259,6 @@ public class BookServiceImpl implements BookService {
     public void deleteBook(Long id) {
         Book book = bookRepository.findById(id).orElseThrow(() -> new NotFoundException("Book not found: " + id));
         
-        // First delete all BookItem records that reference this book
         logger.debug("Deleting all BookItem records for book ID: {}", id);
         List<BookItem> bookItems = bookItemRepository.findByBook(book);
         if (!bookItems.isEmpty()) {
@@ -270,7 +266,6 @@ public class BookServiceImpl implements BookService {
             bookItemRepository.deleteAll(bookItems);
         }
         
-        // Then delete the book itself
         bookRepository.delete(book);
         logger.debug("Successfully deleted book with ID: {}", id);
     }
@@ -308,5 +303,4 @@ public class BookServiceImpl implements BookService {
 			throw new BusinessLogicException("Failed to add book", ex);
 		}
 	}
-	
 }

@@ -72,7 +72,6 @@ public class OrderController {
                 quantity = 1;
             }
             
-            // Verify book exists
             bookService.getBookByName(bookName);
             
             cart.merge(bookName, quantity, Integer::sum);
@@ -145,7 +144,6 @@ public class OrderController {
                 return "error/error";
             }
             
-            // Calculate order total first
             BigDecimal orderTotal = BigDecimal.ZERO;
             for (Map.Entry<String, Integer> entry : cart.entrySet()) {
                 String name = entry.getKey();
@@ -156,7 +154,6 @@ public class OrderController {
                 }
             }
             
-            // Check client balance before creating order
             BigDecimal currentBalance = BigDecimal.ZERO;
             try {
                 currentBalance = clientService.getClientByEmail(principal.getName()).getBalance();
@@ -164,18 +161,15 @@ public class OrderController {
                     currentBalance = BigDecimal.ZERO;
                 }
             } catch (Exception e) {
-                // If we can't get client balance, assume zero
                 currentBalance = BigDecimal.ZERO;
             }
             
             if (currentBalance.compareTo(orderTotal) < 0) {
-                // Show insufficient balance page
                 BigDecimal neededAmount = orderTotal.subtract(currentBalance);
                 model.addAttribute("orderTotal", orderTotal);
                 model.addAttribute("currentBalance", currentBalance);
                 model.addAttribute("neededAmount", neededAmount);
                 
-                // Log for debugging
                 errorLoggingService.logApplicationError("INSUFFICIENT_BALANCE", 
                     new RuntimeException("Insufficient balance: " + currentBalance + " < " + orderTotal), 
                     principal.getName());
@@ -183,7 +177,6 @@ public class OrderController {
                 return "error/insufficient-balance";
             }
             
-            // If balance is sufficient, create order
             OrderDTO order = new OrderDTO();
             order.setClientEmail(principal.getName());
             order.setOrderDate(LocalDateTime.now());
@@ -202,11 +195,9 @@ public class OrderController {
 
             orderService.addOrder(order);
             
-            // Deduct balance from client account
             try {
                 clientService.deductBalance(principal.getName(), orderTotal);
             } catch (Exception e) {
-                // If balance deduction fails, log error but don't fail the order
                 errorLoggingService.logApplicationError("BALANCE_DEDUCTION_FAILED", e, principal.getName());
             }
             

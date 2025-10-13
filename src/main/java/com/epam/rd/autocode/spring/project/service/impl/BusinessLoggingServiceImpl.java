@@ -13,7 +13,6 @@ public class BusinessLoggingServiceImpl implements BusinessLoggingService {
     private static final Logger performanceLogger = LoggerFactory.getLogger("PERFORMANCE");
     private static final Logger dataAccessLogger = LoggerFactory.getLogger("DATA_ACCESS");
     
-    // Book operations
     @Override
     public void logBookCreated(String bookName, String user) {
         businessLogger.info("BOOK_CREATED | Book: {} | User: {} | Timestamp: {}", 
@@ -38,10 +37,9 @@ public class BusinessLoggingServiceImpl implements BusinessLoggingService {
             bookName, user, System.currentTimeMillis());
     }
     
-    // Order operations
     @Override
     public void logOrderCreated(String clientEmail, String totalAmount) {
-        businessLogger.info("ORDER_CREATED | OrderId: {} | Client: {} | Amount: {} | Timestamp: {}", 
+        businessLogger.info("ORDER_CREATED | Client: {} | Amount: {} | Timestamp: {}", 
             clientEmail, totalAmount, System.currentTimeMillis());
     }
     
@@ -57,7 +55,6 @@ public class BusinessLoggingServiceImpl implements BusinessLoggingService {
             orderId, clientEmail, reason, System.currentTimeMillis());
     }
     
-    // Cart operations
     @Override
     public void logItemAddedToCart(String bookName, String user, int quantity) {
         businessLogger.info("ITEM_ADDED_TO_CART | Book: {} | User: {} | Quantity: {} | Timestamp: {}", 
@@ -76,7 +73,6 @@ public class BusinessLoggingServiceImpl implements BusinessLoggingService {
             user, System.currentTimeMillis());
     }
     
-    // User operations
     @Override
     public void logUserRegistered(String email, String role) {
         businessLogger.info("USER_REGISTERED | Email: {} | Role: {} | Timestamp: {}", 
@@ -106,7 +102,6 @@ public class BusinessLoggingServiceImpl implements BusinessLoggingService {
             email, System.currentTimeMillis());
     }
     
-    // Search operations
     @Override
     public void logSearchPerformed(String searchTerm, String user, int resultsCount) {
         businessLogger.info("SEARCH_PERFORMED | Term: {} | User: {} | Results: {} | Timestamp: {}", 
@@ -119,7 +114,6 @@ public class BusinessLoggingServiceImpl implements BusinessLoggingService {
             filterType, filterValue, user, System.currentTimeMillis());
     }
     
-    // General business events
     @Override
     public void logBusinessEvent(String eventType, String details, String user) {
         businessLogger.info("BUSINESS_EVENT | Type: {} | Details: {} | User: {} | Timestamp: {}", 

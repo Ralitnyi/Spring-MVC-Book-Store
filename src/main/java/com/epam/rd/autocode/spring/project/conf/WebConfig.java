@@ -21,7 +21,7 @@ public class WebConfig implements WebMvcConfigurer, ErrorController {
         registry.addInterceptor(blockedUserInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/client/login", "/client/register", "/do-login", "/logout", 
-                                   "/css/**", "/js/**", "/images/**", "/h2-console/**");
+                                   "/css/**", "/js/**", "/images/**");
     }
     
     @Override
