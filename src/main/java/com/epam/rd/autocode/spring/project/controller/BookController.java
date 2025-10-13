@@ -85,7 +85,7 @@ public class BookController {
 	}
 
 	@PostMapping("/add")
-//	@PreAuthorize("hasAnyRole('EMPLOYEE', 'ADMIN')")
+	@PreAuthorize("hasAnyRole('EMPLOYEE', 'ADMIN')")
 	public String addBook(@ModelAttribute("book") @Valid BookDTO bookDTO,
 			BindingResult bindingResult,
 			Model model) {
