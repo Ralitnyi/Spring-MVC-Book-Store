@@ -19,9 +19,9 @@ public class ClientDTO{
     	@NotBlank
     	@Email
     private String email;
-    	@NotNull
-    	@NotBlank
-    	@Size(min = 6, max = 255)
+    	@NotNull(groups = OnCreate.class)
+    	@NotBlank(groups = OnCreate.class)
+    	@Size(min = 6, max = 255, groups = OnCreate.class)
     private String password;
     	@NotNull
     	@NotBlank

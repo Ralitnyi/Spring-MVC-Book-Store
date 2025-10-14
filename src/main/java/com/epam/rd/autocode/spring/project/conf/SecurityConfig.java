@@ -6,21 +6,27 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.oauth2.client.OAuth2LoginConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.SecurityFilterChain;
+
+import com.epam.rd.autocode.spring.project.service.impl.CustomOAuth2UserService;
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
-    private final BlockedUserInterceptor blockedUserInterceptor;
+    private CustomOAuth2UserService customOAuth2UserService;
 
-    SecurityConfig(BlockedUserInterceptor blockedUserInterceptor) {
-        this.blockedUserInterceptor = blockedUserInterceptor;
+	SecurityConfig(BlockedUserInterceptor blockedUserInterceptor, CustomOAuth2UserService customOAuth2UserService) {
+		this.customOAuth2UserService = customOAuth2UserService;
     }
-
+	
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -34,6 +40,10 @@ public class SecurityConfig {
                 .requestMatchers("/employee/**").hasAnyRole("EMPLOYEE", "ADMIN")
                 .requestMatchers("/client/**").hasAnyRole("CLIENT", "ADMIN")
                 .anyRequest().authenticated()
+            )
+            .oauth2Login(oauth -> oauth
+            	    .userInfoEndpoint(userInfo -> userInfo.oidcUserService(customOAuth2UserService))
+            	    .loginPage("/client/login").permitAll()
             )
             .formLogin(form -> form
                 .loginPage("/client/login").permitAll()

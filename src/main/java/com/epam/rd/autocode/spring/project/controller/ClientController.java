@@ -1,6 +1,7 @@
 package com.epam.rd.autocode.spring.project.controller;
 
 import com.epam.rd.autocode.spring.project.dto.ClientDTO;
+import com.epam.rd.autocode.spring.project.dto.OnCreate;
 import com.epam.rd.autocode.spring.project.service.BusinessLoggingService;
 import com.epam.rd.autocode.spring.project.service.ErrorLoggingService;
 import com.epam.rd.autocode.spring.project.service.impl.ClientServiceImpl;
@@ -16,6 +17,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -65,7 +67,7 @@ public class ClientController {
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute("client") @Valid ClientDTO clientDTO,
+    public String register(@ModelAttribute("client") @Validated(OnCreate.class) ClientDTO clientDTO,
                            BindingResult bindingResult,
                            Model model) {
         try {
@@ -111,7 +113,7 @@ public class ClientController {
 
     @PostMapping("/edit")
     @PreAuthorize("hasAnyRole('CLIENT', 'ADMIN')")
-    public String updateProfile(@ModelAttribute("client") @Valid ClientDTO clientDTO,
+    public String updateProfile(@ModelAttribute("client") @Validated() ClientDTO clientDTO,
                                BindingResult bindingResult,
                                Model model,
                                Authentication authentication) {

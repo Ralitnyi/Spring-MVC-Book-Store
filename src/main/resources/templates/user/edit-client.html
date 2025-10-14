@@ -69,7 +69,8 @@
                     class="form-control"
                     id="password"
                     th:field="*{password}"
-                    required
+                    min=6
+                    max=255
                   />
                   <div
                     th:if="${#fields.hasErrors('password')}"
