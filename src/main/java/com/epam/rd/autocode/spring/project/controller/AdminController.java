@@ -75,7 +75,7 @@ public class AdminController {
             employeeServiceImpl.addEmployee(employeeDTO);
             logger.info("Successfully created employee: {}", employeeDTO.getEmail());
             businessLoggingService.logBusinessEvent("EMPLOYEE_CREATED", "Employee created: " + employeeDTO.getEmail(), "admin");
-            return "redirect:/admin/clients";
+            return "redirect:/home";
         } catch (Exception ex) {
             logger.error("Error creating employee: {}", employeeDTO.getEmail(), ex);
             errorLoggingService.logApplicationError("CREATE_EMPLOYEE", ex, "admin");

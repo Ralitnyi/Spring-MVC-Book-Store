@@ -100,7 +100,7 @@ class AdminControllerTest {
 
         String result = adminController.createEmployee(employeeDTO, bindingResult, model);
 
-        assertEquals("redirect:/admin/clients", result);
+        assertEquals("redirect:/home", result);
         verify(employeeServiceImpl).addEmployee(employeeDTO);
         verify(businessLoggingService).logBusinessEvent(eq("EMPLOYEE_CREATED"), anyString(), eq("admin"));
     }
