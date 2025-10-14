@@ -27,8 +27,7 @@ public class BlockedUserInterceptor implements HandlerInterceptor {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         
         if (authentication != null && authentication.isAuthenticated() && 
-            !authentication.getName().equals("anonymousUser")) {
-            
+            !authentication.getName().equals("anonymousUser")) {   
             String email = authentication.getName();
             
             Client client = clientRepository.findByEmail(email);
