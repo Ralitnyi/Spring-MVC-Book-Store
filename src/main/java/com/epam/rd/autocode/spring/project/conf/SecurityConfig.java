@@ -1,6 +1,5 @@
 package com.epam.rd.autocode.spring.project.conf;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -10,15 +9,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
-    @Autowired
-    private AuthenticationFailureHandler authenticationFailureHandler;
+    private final BlockedUserInterceptor blockedUserInterceptor;
+
+    SecurityConfig(BlockedUserInterceptor blockedUserInterceptor) {
+        this.blockedUserInterceptor = blockedUserInterceptor;
+    }
 
     @Bean
     PasswordEncoder passwordEncoder() {
@@ -40,7 +41,6 @@ public class SecurityConfig {
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/", true)
-                .failureHandler(authenticationFailureHandler)
             )
             .logout(logout -> logout
                 .logoutUrl("/logout")
