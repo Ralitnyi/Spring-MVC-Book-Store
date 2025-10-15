@@ -15,17 +15,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClientDTO{
-    	@NotNull
-    	@NotBlank
-    	@Email
+    	@NotNull(groups = {OnCreate.class, OnUpdate.class})
+    	@NotBlank(groups = {OnCreate.class, OnUpdate.class})
+    	@Email(groups = {OnCreate.class, OnUpdate.class})
     private String email;
     	@NotNull(groups = OnCreate.class)
     	@NotBlank(groups = OnCreate.class)
     	@Size(min = 6, max = 255, groups = OnCreate.class)
     private String password;
-    	@NotNull
-    	@NotBlank
-    	@Size(max = 255)
+    	@NotNull(groups = {OnCreate.class, OnUpdate.class})
+    	@NotBlank(groups = {OnCreate.class, OnUpdate.class})
+    	@Size(max = 255, groups = {OnCreate.class, OnUpdate.class})
     private String name;
     private BigDecimal balance;
     private boolean blocked;
