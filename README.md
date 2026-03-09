@@ -40,16 +40,3 @@ Run the application:
   ```bash
   mvn spring-boot:run
   ```
-
-## Project Structure
-
-Spring-MVC-Book-Store
-├── src
-│   ├── main
-│   │   ├── java
-│   │   ├── resources
-│   │   └── webapp
-├── pom.xml
-└── README.md
-Running the Application
-After starting the application, navigate to http://localhost:8080 in your web browser to access the Book Store.
